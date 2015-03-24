@@ -1,0 +1,137 @@
+input.pi_pretty_input, .pi-settings textarea{
+  border: 1px solid #9ca0a3;
+  border-radius: 3px;
+  box-shadow: none;
+  width: 100%;
+}
+.pi-settings textarea{
+  height: 125px;
+}
+.pi-gallery {
+  overflow: auto;
+  padding:  0;
+  text-align: center;
+}
+.pi-gallery .attachment {
+  width: 230px;
+  height: 150px;
+  /*max-width: 250px;*/
+  margin-right: 5px;
+}
+.pi-gallery .attachment img{
+  width: 100%;
+  height: 100%;
+}
+.posttype-post {
+  padding: 15px;
+}
+ .posttype-post .attachment {
+  width: 170px;
+ }
+.gallery-wrapper .pi-gallery {
+    overflow: auto;
+      padding:  20px;
+      text-align: center;
+}
+.pi-gallery li{
+  position: relative;
+} 
+.pi-gallery li a.pi_remove {
+  position: absolute;
+  right: -3px;
+  top: 9px;
+  display: none;
+}
+.pi-gallery li:hover,
+.pi-gallery li:focus {
+  /*box-shadow: 0 0 0 1px #fff, 0 0 0 5px #1e8cbe;*/
+}
+.pi-gallery li:hover a.pi_remove {
+  display: block;
+}
+.pi-gallery.logo img {
+    border: 1px solid #ccc;
+    /*background: #f0f0f0;*/
+}
+
+
+.pi_map_icon{
+  max-width: 50px;
+  max-height: 50px;
+  width: 50px;
+  height: 50px;
+}
+.pi_map_icon.pi-gallery .attachment.pi_mapicon{
+  width: 100%;
+  height: 100%;
+}
+.pi-gallery.pi_map_icon .attachment.pi_mapicon img{
+  width: 100%;
+  height: 100%;
+}
+.pi-gallery.pi_map_icon li:hover a.pi_remove
+{
+  display: none;
+}
+
+
+/*.pi_remove{
+    color: #FF0000;
+    font-size: 20px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+}*/
+
+
+.pi_remove span{
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    cursor: pointer;
+    display: none;
+    font-size: 30px;
+    height: 29px;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    width: 30px;
+    display: block;
+}
+input.pi_pretty_input.medium{
+  max-width: 300px !important;
+}
+
+
+
+.pi-gallery .attachment.pi_mapicon{
+  width: auto;
+  height: auto;
+  border: 1px solid #ddd;
+}
+.pi-gallery .attachment.pi_mapicon img{
+  width: auto;
+  height: auto;
+}
+
+
+.pi-alert {
+    border-left-color: #d9534f;
+}
+.pi-alert.danger{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    /*border-color: #eee;*/
+    border-image: none;
+    /*border-radius: 3px;*/
+    border-style: solid;
+    border-width: 0px 0px 0px 5px;
+    /*margin: 20px 0;*/
+    padding: 20px;
+}
+
+.pi-alert.danger strong{
+  color: #d9534f;
+}
