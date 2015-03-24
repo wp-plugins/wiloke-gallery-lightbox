@@ -4,7 +4,7 @@ Plugin Name:  Gallery Lightbox
 Plugin URI: http://demo.wiloke.net/wordpress/wp-content/uploads/2014/11/gallery-lightbox.zip
 Author URI: wikoke.com
 Author: wiloke
-Version: 1.0
+Version: 1.1
 Description: Easy to create a gallery
 License: Under GPL2
 
@@ -355,7 +355,7 @@ class piGallery
 			$galleryWidth = isset($aData['pi_width_of_wrapper']) && !empty($aData['pi_width_of_wrapper']) ? $aData['pi_width_of_wrapper'] : '100%';
 
 			$html = "";
-
+			$html .= '<div id="'.$aData['pi_custom_id'].'" data-width="'.$galleryWidth.'" class="pi-gallery-lighbox pi_custom_class pi_custom_id '.$aData['pi_custom_class'].'">';
 
 			if ( !empty($aData['pi_title']) || !empty($aData['pi_des']) ) 
 			{
@@ -444,9 +444,9 @@ class piGallery
 				$html .= '</div>';
 			$html .= '</div>';
 
-			if ( $editButton ) :
+			
 			$html .= '</div>';
-			endif;
+			
 			
 			return $html;
 	}	
@@ -551,7 +551,6 @@ class piGallery
 									$sImgs .= '<a href="'.wp_get_attachment_url( $id ).'" class="js_magific" title="'.get_the_title($post->ID).'"></a>';
 								}
 							}
-
 							if ( has_post_thumbnail() )
 							{
 								$gallery .= '<div class="popup-gallery mix_all pirates mix '.$keyFilter.'">';
@@ -564,7 +563,6 @@ class piGallery
 
 						}
 					break;
-
 					case 'video':
 						$getVideoType = $getIds['video_type'] ? $getIds['video_type'] : '';
 						$link 		  = $getIds['video_link'] ? str_replace("https", "http", $getIds['video_link']) : '';
@@ -585,7 +583,6 @@ class piGallery
 
 						endif;
 					break;
-
 					case 'writesomething':
 						$liveurl = "data-url=\"".home_url()."/?pi_gallery=".get_the_title()."&amp;pi_livepreview=true"."\"";
 						$gallery .= '<div class="popup-ajax mix_all pirates mix '.$keyFilter.'" '.$liveurl.'>';
@@ -597,7 +594,7 @@ class piGallery
 				endswitch;
 			endif;
 
-			return $gallery;
+			return '<div class="pi-gallery-lighbox">'.$gallery.'</div>';
 	}
 
 	public function pi_query_post()
@@ -785,41 +782,7 @@ class piGallery
 
 		if ( !empty($post) ) :
 			if ( has_shortcode( stripslashes($post->post_content), self::PI_SHORTCODENAME ) ||   self::PI_SHORTCODENAME == $post->post_type  ) :
-				
-				if ( is_user_logged_in() && current_user_can('edit_post', $post->ID) )
-				{
-					wp_enqueue_style('wp-color-picker');
-					wp_register_style('pi-popupstyle', plugin_dir_url(__FILE__) . 'admin/assets/css/stype-popup.css', array(), '1.0');
 
-					wp_enqueue_style('pi-popupstyle');
-					wp_enqueue_script('jquery-ui-dialog');
-					wp_enqueue_script('jquery-ui-tabs');
-					wp_enqueue_script('jquery-form');
-					wp_enqueue_script('jquery-ui-draggable');
-
-					// Userfull http://wordpress.stackexchange.com/questions/82718/how-do-i-implement-the-wordpress-iris-picker-into-my-plugin-on-the-front-end
-				 	wp_enqueue_script(
-				        'iris',
-				        admin_url( 'js/iris.min.js' ),
-				        array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
-				        false,
-				        1
-				    );
-				    wp_enqueue_script(
-				        'wp-color-picker',
-				        admin_url( 'js/color-picker.min.js' ),
-				        array( 'iris' ),
-				        false,
-				        1
-				    );
-				    $colorpicker_l10n = array(
-				        'clear' => __( 'Clear' ),
-				        'defaultString' => __( 'Default' ),
-				        'pick' => __( 'Select Color' )
-				    );
-				    wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n ); 
-
-				}
 
 				$url = plugin_dir_url(__FILE__) . 'assets/';
 
